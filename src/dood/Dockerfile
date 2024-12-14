@@ -7,9 +7,12 @@ RUN apt-get update -y \
     && chmod a+r /etc/apt/keyrings/docker.gpg \
     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(. /etc/os-release && echo $VERSION_CODENAME) stable" \
     | tee /etc/apt/sources.list.d/docker.list > /dev/null \
-    && add-apt-repository ppa:rmescandon/yq \
     && apt-get update -y \
     && apt-get install -y \
+    wget \
     docker-ce-cli \
-    jq \
-    yq
+    jq
+
+RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq &&\
+chmod +x /usr/bin/yq
+
