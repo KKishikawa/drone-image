@@ -1,0 +1,4 @@
+services:
+  app:
+    image: node:lts
+    command: yarn start
