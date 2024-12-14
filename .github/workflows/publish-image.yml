@@ -55,7 +55,8 @@ jobs:
           images: ghcr.io/${{ github.repository }}/${{ steps.parse_inputs.outputs.IMAGE_NAME }}
           tags: |
             type=raw,value=latest,enable=${{ steps.parse_inputs.outputs.IS_BETA == 0 }}
-            type=raw,value=${{ steps.parse_inputs.outputs.IMAGE_VERSION }}
+            type=schedule,pattern={{date 'YYYYMMDD-hhmmss' tz='Asia/Tokyo'}}
+            type=sha
       - name: Build and push
         uses: docker/build-push-action@48aba3b46d1b1fec4febb7c5d0c644b249a11355 # v6
         with:
