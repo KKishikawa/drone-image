@@ -1,4 +1,4 @@
-FROM debian:12.9-slim
+FROM debian:13.2-slim
 
 RUN apt-get update -y \
     && apt-get install -y ca-certificates curl gnupg \
